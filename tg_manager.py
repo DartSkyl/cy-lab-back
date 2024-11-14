@@ -24,27 +24,27 @@ async def check_chat(chat_id, user_msg, client: Client):
     # await timer.remove_timer(chat_id)
 
 
-class AnswerTimer:
-    def __init__(self):
-        self._scheduler = AsyncIOScheduler()
-        self._scheduler.start()
-
-    async def start_answer_timer(self, chat_id, user_msg, client):
-        self._scheduler.add_job(
-            func=check_chat,
-            kwargs={'chat_id': chat_id, 'user_msg': user_msg, 'client': client},
-            id=str(chat_id),
-            trigger='interval',
-            seconds=1,
-            max_instances=1,
-            replace_existing=True
-        )
-
-    async def remove_timer(self, chat_id):
-        self._scheduler.remove_job(str(chat_id))
-
-
-timer = AnswerTimer()
+# class AnswerTimer:
+#     def __init__(self):
+#         self._scheduler = AsyncIOScheduler()
+#         self._scheduler.start()
+#
+#     async def start_answer_timer(self, chat_id, user_msg, client):
+#         self._scheduler.add_job(
+#             func=check_chat,
+#             kwargs={'chat_id': chat_id, 'user_msg': user_msg, 'client': client},
+#             id=str(chat_id),
+#             trigger='interval',
+#             seconds=1,
+#             max_instances=1,
+#             replace_existing=True
+#         )
+#
+#     async def remove_timer(self, chat_id):
+#         self._scheduler.remove_job(str(chat_id))
+#
+#
+# timer = AnswerTimer()
 
 
 @app.on_message(filters=incoming)
