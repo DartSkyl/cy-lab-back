@@ -1,0 +1,14 @@
+[Unit]
+Description=Bot
+After=postgresql.service
+
+[Service]
+Type=simple
+Restart=always
+User=revmin
+WorkingDirectory=/home/revmin/Cy_Lab/cy-lab-back
+ExecStart=/home/revmin/Cy_Lab/cy-lab-back/venv/bin/python3 /home/revmin/Cy_Lab/cy-lab-back/tg_manager.py
+OOMScoreAdjust=-1000
+
+[Install]
+WantedBy=multi-user.target
